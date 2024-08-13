@@ -13,7 +13,7 @@ repositories {
 ext {
     lombokVersion = '1.18.30'
     junitSuiteVersion = '1.10.2'
-    aspectJVersion = '1.9.20.1'
+    aspectJVersion = '1.9.22.1'
     allureVersion = '2.26.0'
 }
 
@@ -55,4 +55,6 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    // Configure javaagent for test execution
+    jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
 }

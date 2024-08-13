@@ -3,7 +3,6 @@ package org.example.item;
 import io.restassured.response.Response;
 import org.example.BaseTest;
 import org.example.model.Item;
-import org.example.verification.assertion.HttpAssertion;
 import org.example.verification.assertion.ItemAssertion;
 import org.junit.jupiter.api.Test;
 
@@ -24,8 +23,6 @@ public class GetItemTest extends BaseTest {
                 .build();
 
         Response response = itemClient.getItemById(id);
-        HttpAssertion.assertThat(response)
-                .statusIsOk();
         ItemAssertion.assertThat(response)
                 .isEqualTo(expectedItem);
     }

@@ -9,7 +9,7 @@ public record Item(String id,
                    Data data) {
 
     @Builder
-    public record Data(String year,
+    public record Data(Integer year,
                        Double price,
                        @JsonProperty("CPU model") String cpuModel,
                        @JsonProperty("Hard disk size") String hardDiskSize) {

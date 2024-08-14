@@ -20,7 +20,7 @@ public class GetItemTest extends BaseTest {
     @ParameterizedTest(name = "for item with id = 7")
     @MethodSource("org.example.factory.ItemFactory#provideItemWithId7")
     public void getItem(Item expectedItem) {
-        int id = 7;
+        String id = "7";
 
         Response response = itemClient.getItemById(id);
         HttpAssertion.assertThat(response)

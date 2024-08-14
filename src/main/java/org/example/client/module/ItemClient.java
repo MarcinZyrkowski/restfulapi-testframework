@@ -14,16 +14,15 @@ public class ItemClient extends RestClient {
     private static final String ITEMS = "/objects";
 
     @Step("Get item by id: {itemId}")
-    public Response getItemById(int itemId) {
+    public Response getItemById(String itemId) {
         return basicRequestSpecification()
                 .pathParam("itemId", itemId)
                 .get(GET_ITEM);
     }
 
     @Step("Get items by ids: {ids}")
-    public Response getItemsByIds(int... ids) {
-        List<Integer> idList = Arrays.stream(ids)
-                .boxed()
+    public Response getItemsByIds(String... ids) {
+        List<String> idList = Arrays.stream(ids)
                 .toList();
 
         return basicRequestSpecification()

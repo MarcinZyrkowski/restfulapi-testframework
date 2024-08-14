@@ -27,9 +27,4 @@ public class HttpAssumption {
         validateResponseStatusCode(HttpStatus.SC_OK);
     }
 
-    @Step("Status code was: 201")
-    public void statusIsCreated() {
-        validateResponseStatusCode(HttpStatus.SC_CREATED);
-    }
-
 }

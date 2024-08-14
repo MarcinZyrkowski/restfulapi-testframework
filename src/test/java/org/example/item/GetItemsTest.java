@@ -22,7 +22,7 @@ public class GetItemsTest extends BaseTest {
     @ParameterizedTest(name = "for items with id = 3,5,7")
     @MethodSource("org.example.factory.ItemsFactory#provideItemsWithIds357")
     public void getItemsByIds(List<Item> expectedItemList) {
-        int[] ids = new int[]{3, 5, 7};
+        String[] ids = {"3", "5", "7"};
 
         Response response = itemClient.getItemsByIds(ids);
         HttpAssertion.assertThat(response)

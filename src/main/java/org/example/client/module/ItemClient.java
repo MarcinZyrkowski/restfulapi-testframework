@@ -9,14 +9,14 @@ import org.example.model.service.Item;
 
 public class ItemClient extends RestClient {
 
-  private static final String GET_ITEM = "/objects/{itemId}";
+  private static final String ITEM_BY_ID = "/objects/{itemId}";
   private static final String ITEMS = "/objects";
 
   @Step("Get item by id: {itemId}")
   public Response getItemById(String itemId) {
     return basicRequestSpecification()
         .pathParam("itemId", itemId)
-        .get(GET_ITEM);
+        .get(ITEM_BY_ID);
   }
 
   @Step("Get items by ids: {ids}")
@@ -34,6 +34,13 @@ public class ItemClient extends RestClient {
     return basicRequestSpecification()
         .body(item)
         .post(ITEMS);
+  }
+
+  @Step("Delete item by id: {itemId}")
+  public Response deleteItem(String itemId) {
+    return basicRequestSpecification()
+        .pathParam("itemId", itemId)
+        .delete(ITEM_BY_ID);
   }
 
 }

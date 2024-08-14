@@ -37,4 +37,9 @@ public class HttpAssertionAssumption {
     validateResponseStatusCode(HttpStatus.SC_OK);
   }
 
+  @Step("Status code was: 404")
+  public void statusIsNotFound() {
+    validateResponseStatusCode(HttpStatus.SC_NOT_FOUND);
+  }
+
 }

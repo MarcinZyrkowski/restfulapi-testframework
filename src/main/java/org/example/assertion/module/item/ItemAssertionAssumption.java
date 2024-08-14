@@ -36,7 +36,7 @@ public class ItemAssertionAssumption {
   }
 
   public void comesFromRequestBody(Item requestBody) {
-    Allure.step("Assert that item response comes from request body", () -> {
+    Allure.step("Item response comes from request body", () -> {
       itemObjectAssert
           .usingRecursiveComparison()
           .ignoringFields("id", "createdAt")

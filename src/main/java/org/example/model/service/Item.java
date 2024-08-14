@@ -22,7 +22,6 @@ public record Item(String id,
                      @JsonProperty("capacity GB") Integer capacity,
                      @JsonProperty("CPU model") String cpuModel,
                      @JsonProperty("Hard disk size") String hardDiskSize) {
-
   }
 
 }

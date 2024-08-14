@@ -1,4 +1,4 @@
-package org.example.verification.assertion;
+package org.example.verification.assertion.common;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;

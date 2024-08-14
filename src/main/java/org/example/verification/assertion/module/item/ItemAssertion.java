@@ -1,4 +1,4 @@
-package org.example.verification.assertion;
+package org.example.verification.assertion.module.item;
 
 import io.qameta.allure.Allure;
 import io.restassured.response.Response;

@@ -15,48 +15,38 @@ import org.example.utils.FakerUtils;
 public class ItemGenerator {
 
   private static final Random RANDOM = new Random();
+  private static final int MIN_PRICE = 1;
+  private static final int MAX_PRICE = 10_000;
+  private static final int MIN_YEAR = 2010;
 
-  // todo generate random phone or random laptop and then return it
   public static Item generateRandomItem() {
-    int minPrice = 1;
-    int maxPrice = 10_000;
-    int minYear = 2010;
+    return RANDOM.nextBoolean() ? generateRandomLaptop() : generateRandomPhone();
+  }
 
-    Device device = RANDOM.nextBoolean() ? Device.PHONE : Device.LAPTOP;
-
-    Item item = Item.builder()
-        .name(device == Device.PHONE
-            ? EnumUtils.getRandom(Phone.class).getName()
-            : EnumUtils.getRandom(Laptop.class).getName())
+  private static Item generateRandomPhone() {
+    return Item.builder()
+        .name(EnumUtils.getRandom(Phone.class).getName())
         .data(Item.Data.builder()
-            .year(RANDOM.nextInt(minYear, LocalDate.now().getYear()))
+            .year(RANDOM.nextInt(MIN_YEAR, LocalDate.now().getYear()))
             .color(EnumUtils.getRandom(Colors.class).getName())
-            .price((double) FakerUtils.getFaker().number().numberBetween(minPrice, maxPrice))
+            .price((double) FakerUtils.getFaker().number().numberBetween(MIN_PRICE, MAX_PRICE))
+            .capacity(EnumUtils.getRandom(Capacity.class).getSize())
             .cpuModel(EnumUtils.getRandom(CpuModel.class).getModelName())
             .build())
         .build();
-
-    if (device == Device.PHONE) {
-      item = item.toBuilder()
-          .data(item.data().toBuilder()
-              .capacity(EnumUtils.getRandom(Capacity.class).getSize())
-              .build())
-          .build();
-    }
-
-    if (device == Device.LAPTOP) {
-      item = item.toBuilder()
-          .data(item.data().toBuilder()
-              .hardDiskSize(EnumUtils.getRandom(HardDiskSize.class).getSize())
-              .build())
-          .build();
-    }
-
-    return item;
   }
 
-  private enum Device {
-    PHONE, LAPTOP
+  private static Item generateRandomLaptop() {
+    return Item.builder()
+        .name(EnumUtils.getRandom(Laptop.class).getName())
+        .data(Item.Data.builder()
+            .year(RANDOM.nextInt(MIN_YEAR, LocalDate.now().getYear()))
+            .color(EnumUtils.getRandom(Colors.class).getName())
+            .price((double) FakerUtils.getFaker().number().numberBetween(MIN_PRICE, MAX_PRICE))
+            .hardDiskSize(EnumUtils.getRandom(HardDiskSize.class).getSize())
+            .cpuModel(EnumUtils.getRandom(CpuModel.class).getModelName())
+            .build())
+        .build();
   }
 
 }

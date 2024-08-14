@@ -7,6 +7,8 @@ import org.example.BaseTest;
 import org.example.assertion.common.HttpAssertionAssumption;
 import org.example.assertion.module.item.DeleteMessageAssertionAssumption;
 import org.example.assertion.module.item.ErrorResponseAssertionAssumption;
+import org.example.generator.DeleteResponseGenerator;
+import org.example.generator.ErrorResponseGenerator;
 import org.example.mapper.ResponseMapper;
 import org.example.model.service.DeleteResponse;
 import org.example.model.service.ErrorResponse;
@@ -31,9 +33,7 @@ public class DeleteItemTest extends BaseTest {
     Item postResponseBody = ResponseMapper.mapToItem(postResponse);
 
     // delete item
-    DeleteResponse expectedDeleteResponse = DeleteResponse.builder()
-        .message(String.format("Object with id = %s has been deleted.", postResponseBody.id()))
-        .build();
+    DeleteResponse expectedDeleteResponse = DeleteResponseGenerator.generateWithId(postResponseBody.id());
     Response deleteResponse = itemClient.deleteItem(postResponseBody.id());
     HttpAssertionAssumption.assertThat(deleteResponse)
         .statusIsOk();
@@ -41,9 +41,7 @@ public class DeleteItemTest extends BaseTest {
         .isEqualsTo(expectedDeleteResponse);
 
     // verify item is deleted
-    ErrorResponse expectedErrorResponse = ErrorResponse.builder()
-        .error(String.format("Oject with id=%s was not found.", postResponseBody.id()))
-        .build();
+    ErrorResponse expectedErrorResponse = ErrorResponseGenerator.generateWithId(postResponseBody.id());
     Response getResponse = itemClient.getItemById(postResponseBody.id());
     HttpAssertionAssumption.assumeThat(getResponse)
         .statusIsNotFound();

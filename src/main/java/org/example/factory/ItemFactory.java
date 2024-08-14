@@ -1,6 +1,7 @@
 package org.example.factory;
 
-import org.example.model.Item;
+import org.example.generator.ItemGenerator;
+import org.example.model.service.Item;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.util.stream.Stream;
@@ -19,6 +20,12 @@ public class ItemFactory {
                                 .hardDiskSize("1 TB")
                                 .build())
                         .build())
+        );
+    }
+
+    public static Stream<Arguments> provideRandomItem() {
+        return Stream.of(
+                Arguments.of(ItemGenerator.generateRandomItem())
         );
     }
 

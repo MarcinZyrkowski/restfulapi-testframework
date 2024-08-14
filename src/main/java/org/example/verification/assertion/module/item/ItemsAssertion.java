@@ -6,7 +6,7 @@ import io.restassured.response.Response;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.assertj.core.api.Assertions;
-import org.example.model.Item;
+import org.example.model.service.Item;
 import org.example.utils.JsonConverter;
 
 import java.util.List;

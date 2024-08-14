@@ -12,21 +12,20 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 @Epic("Item")
-@Feature("Get Item")
-@DisplayName("Get Item Test")
-public class GetItemTest extends BaseTest {
+@Feature("Create Item")
+@DisplayName("Create Item Test")
+public class CreateItemTest extends BaseTest {
 
-    @DisplayName("Get Item: ")
-    @ParameterizedTest(name = "for item with id = 7")
-    @MethodSource("org.example.factory.ItemFactory#provideItemWithId7")
-    public void getItem(Item expectedItem) {
-        int id = 7;
+    @DisplayName("Create item")
+    @ParameterizedTest(name = "with random values")
+    @MethodSource("org.example.factory.ItemFactory#provideRandomItem")
+    public void createItem(Item requestBody) {
 
-        Response response = itemClient.getItemById(id);
+        Response response = itemClient.createItem(requestBody);
         HttpAssertion.assertThat(response)
                 .statusIsOk();
         ItemAssertion.assertThat(response)
-                .isEqualTo(expectedItem);
+                .comesFromRequestBody(requestBody);
     }
 
 }

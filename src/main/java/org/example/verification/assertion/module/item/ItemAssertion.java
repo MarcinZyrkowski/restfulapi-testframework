@@ -6,7 +6,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.example.mapper.ResponseMapper;
-import org.example.model.Item;
+import org.example.model.service.Item;
 import org.example.utils.JsonConverter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -25,6 +25,17 @@ public class ItemAssertion {
                     .isEqualTo(expectedItem);
 
             Allure.addAttachment("expected item", JsonConverter.serializePojo(expectedItem));
+        });
+    }
+
+    public void comesFromRequestBody(Item requestBody) {
+        Allure.step("comes from request body", () -> {
+            Assertions.assertThat(item)
+                    .usingRecursiveComparison()
+                    .ignoringFields("id", "createdAt")
+                    .isEqualTo(requestBody);
+
+            Allure.addAttachment("request body", JsonConverter.serializePojo(requestBody));
         });
     }
 

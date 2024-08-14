@@ -1,14 +1,21 @@
-package org.example.model;
+package org.example.model.service;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
+import lombok.With;
 
-@Builder
+@With
+@Builder(toBuilder = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public record Item(String id,
                    String name,
-                   Data data) {
+                   Data data,
+                   String createdAt) {
 
-    @Builder
+    @With
+    @Builder(toBuilder = true)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public record Data(Integer year,
                        Double price,
                        String color,

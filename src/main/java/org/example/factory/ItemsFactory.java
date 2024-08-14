@@ -1,6 +1,6 @@
 package org.example.factory;
 
-import org.example.model.Item;
+import org.example.model.service.Item;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.util.List;

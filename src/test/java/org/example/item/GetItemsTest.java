@@ -4,7 +4,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.example.BaseTest;
-import org.example.model.Item;
+import org.example.model.service.Item;
 import org.example.verification.assertion.common.HttpAssertion;
 import org.example.verification.assertion.module.item.ItemsAssertion;
 import org.junit.jupiter.api.DisplayName;

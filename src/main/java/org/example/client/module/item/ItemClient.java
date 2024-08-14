@@ -1,4 +1,4 @@
-package org.example.client.module;
+package org.example.client.module.item;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;

@@ -4,10 +4,10 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.example.BaseTest;
-import org.example.mapper.ResponseMapper;
-import org.example.model.service.Item;
 import org.example.assertion.common.HttpAssertionAssumption;
 import org.example.assertion.module.item.ItemAssertionAssumption;
+import org.example.mapper.ResponseMapper;
+import org.example.model.service.Item;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -29,19 +29,14 @@ public class CreateItemTest extends BaseTest {
     ItemAssertionAssumption.assertThat(postResponse)
         .comesFromRequestBody(requestBody);
 
-    // verify item is created
+    // created item
     Item postResponseBody = ResponseMapper.mapToItem(postResponse);
-    Response getResponse = itemClient.getItemById(postResponseBody.id());
-    HttpAssertionAssumption.assumeThat(getResponse)
-        .statusIsOk();
-    ItemAssertionAssumption.assumeThat(getResponse)
-        .comesFromRequestBody(requestBody);
+
+    // verify item is created
+    itemController.verifyItemExists(postResponseBody.id(), requestBody);
 
     // tear down
-    // delete created item
-    Response deleteResponse = itemClient.deleteItem(postResponseBody.id());
-    HttpAssertionAssumption.assumeThat(deleteResponse)
-        .statusIsOk();
+    itemController.deleteItem(postResponseBody.id());
   }
 
 }

@@ -6,12 +6,8 @@ import io.restassured.response.Response;
 import org.example.BaseTest;
 import org.example.assertion.common.HttpAssertionAssumption;
 import org.example.assertion.module.item.DeleteMessageAssertionAssumption;
-import org.example.assertion.module.item.ErrorResponseAssertionAssumption;
 import org.example.generator.DeleteResponseGenerator;
-import org.example.generator.ErrorResponseGenerator;
-import org.example.mapper.ResponseMapper;
 import org.example.model.service.DeleteResponse;
-import org.example.model.service.ErrorResponse;
 import org.example.model.service.Item;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -27,10 +23,7 @@ public class DeleteItemTest extends BaseTest {
   @MethodSource("org.example.factory.ItemFactory#provideRandomItem")
   public void deleteItem(Item requestBody) {
     // create item
-    Response postResponse = itemClient.createItem(requestBody);
-    HttpAssertionAssumption.assumeThat(postResponse)
-        .statusIsOk();
-    Item postResponseBody = ResponseMapper.mapToItem(postResponse);
+    Item postResponseBody = itemController.createItem(requestBody);
 
     // delete item
     DeleteResponse expectedDeleteResponse = DeleteResponseGenerator.generateWithId(postResponseBody.id());
@@ -41,12 +34,7 @@ public class DeleteItemTest extends BaseTest {
         .isEqualsTo(expectedDeleteResponse);
 
     // verify item is deleted
-    ErrorResponse expectedErrorResponse = ErrorResponseGenerator.generateWithId(postResponseBody.id());
-    Response getResponse = itemClient.getItemById(postResponseBody.id());
-    HttpAssertionAssumption.assumeThat(getResponse)
-        .statusIsNotFound();
-    ErrorResponseAssertionAssumption.assumeThat(getResponse)
-        .isEqualTo(expectedErrorResponse);
+    itemController.verifyItemDoesntExist(postResponseBody.id());
   }
 
   // todo add test for removing constant data e.g. item with id 6

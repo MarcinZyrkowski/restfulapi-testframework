@@ -31,8 +31,9 @@ public class DeleteItemTest extends BaseTest {
     Item postResponseBody = ResponseMapper.mapToItem(postResponse);
 
     // delete item
-    DeleteResponse expectedDeleteResponse = new DeleteResponse(
-        String.format("Object with id = %s has been deleted.", postResponseBody.id()));
+    DeleteResponse expectedDeleteResponse = DeleteResponse.builder()
+        .message(String.format("Object with id = %s has been deleted.", postResponseBody.id()))
+        .build();
     Response deleteResponse = itemClient.deleteItem(postResponseBody.id());
     HttpAssertionAssumption.assertThat(deleteResponse)
         .statusIsOk();
@@ -40,13 +41,16 @@ public class DeleteItemTest extends BaseTest {
         .isEqualsTo(expectedDeleteResponse);
 
     // verify item is deleted
-    ErrorResponse expectedErrorResponse = new ErrorResponse(String.format("Oject with id=%s was not found.",
-        postResponseBody.id()));
+    ErrorResponse expectedErrorResponse = ErrorResponse.builder()
+        .error(String.format("Oject with id=%s was not found.", postResponseBody.id()))
+        .build();
     Response getResponse = itemClient.getItemById(postResponseBody.id());
     HttpAssertionAssumption.assumeThat(getResponse)
         .statusIsNotFound();
     ErrorResponseAssertionAssumption.assumeThat(getResponse)
         .isEqualTo(expectedErrorResponse);
   }
+
+  // todo add test for removing constant data e.g. item with id 6
 
 }

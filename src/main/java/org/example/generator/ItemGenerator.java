@@ -16,6 +16,7 @@ public class ItemGenerator {
 
   private static final Random RANDOM = new Random();
 
+  // todo generate random phone or random laptop and then return it
   public static Item generateRandomItem() {
     int minPrice = 1;
     int maxPrice = 10_000;

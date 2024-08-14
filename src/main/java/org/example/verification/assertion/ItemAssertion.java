@@ -1,11 +1,13 @@
 package org.example.verification.assertion;
 
+import io.qameta.allure.Allure;
 import io.restassured.response.Response;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.example.mapper.ResponseMapper;
 import org.example.model.Item;
+import org.example.utils.JsonConverter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ItemAssertion {
@@ -18,8 +20,12 @@ public class ItemAssertion {
     }
 
     public void isEqualTo(Item expectedItem) {
-        Assertions.assertThat(item)
-                .isEqualTo(expectedItem);
+        Allure.step("is equal to", () -> {
+            Assertions.assertThat(item)
+                    .isEqualTo(expectedItem);
+
+            Allure.addAttachment("expected item", JsonConverter.serializePojo(expectedItem));
+        });
     }
 
 }

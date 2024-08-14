@@ -1,27 +1,26 @@
 package org.example.item;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.example.BaseTest;
 import org.example.model.Item;
 import org.example.verification.assertion.HttpAssertion;
 import org.example.verification.assertion.ItemAssertion;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
+@Epic("Item")
+@Feature("Get Item")
+@DisplayName("Get Item Test")
 public class GetItemTest extends BaseTest {
 
-    @Test
-    public void getItem() {
+    @DisplayName("Get Item: ")
+    @ParameterizedTest(name = "for item with id = 7")
+    @MethodSource("org.example.factory.ItemFactory#provideItemWithId7")
+    public void getItem(Item expectedItem) {
         int id = 7;
-        Item expectedItem = Item.builder()
-                .id("7")
-                .name("Apple MacBook Pro 16")
-                .data(Item.Data.builder()
-                        .year(2019)
-                        .price(1849.99)
-                        .cpuModel("Intel Core i9")
-                        .hardDiskSize("1 TB")
-                        .build())
-                .build();
 
         Response response = itemClient.getItemById(id);
         HttpAssertion.assertThat(response)

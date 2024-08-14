@@ -23,7 +23,7 @@ public class ItemController {
     return ResponseMapper.mapToItem(postResponse);
   }
 
-  @Step("Verify Item doesn't exist")
+  @Step("Verify Item doesn't exist - using get method")
   public void verifyItemDoesntExist(String itemId) {
     ErrorResponse expectedErrorResponse = ErrorResponseGenerator.generateWithId(itemId);
 
@@ -41,7 +41,7 @@ public class ItemController {
         .statusIsOk();
   }
 
-  @Step("Verify Item exists")
+  @Step("Verify Item exists - using get method")
   public void verifyItemExists(String itemId, Item requestBody) {
     Response getResponse = itemClient.getItemById(itemId);
     HttpAssertionAssumption.assumeThat(getResponse)

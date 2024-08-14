@@ -30,7 +30,7 @@ public class ItemsAssertionAssumption {
   }
 
   public void isEqualTo(List<Item> expectedList) {
-    Allure.step("Items response is equal to", () -> {
+    Allure.step("Assert/Assume items response is equal to", () -> {
       itemListWrapperObjectAssertionAssumption
           .isEqualTo(new ItemListWrapper(expectedList));
 

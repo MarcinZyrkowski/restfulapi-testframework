@@ -27,7 +27,7 @@ public class ItemAssertionAssumption {
   }
 
   public void isEqualTo(Item expectedItem) {
-    Allure.step("Item is equal to", () -> {
+    Allure.step("Assert/Assume item is equal to", () -> {
       itemObjectAssert
           .isEqualTo(expectedItem);
 
@@ -36,7 +36,7 @@ public class ItemAssertionAssumption {
   }
 
   public void comesFromRequestBody(Item requestBody) {
-    Allure.step("Item response comes from request body", () -> {
+    Allure.step("Assert/Assume item response comes from request body", () -> {
       itemObjectAssert
           .usingRecursiveComparison()
           .ignoringFields("id", "createdAt")

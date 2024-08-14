@@ -22,6 +22,7 @@ public class GetItemTest extends BaseTest {
   public void getItem(Item expectedItem) {
     String id = "7";
 
+    // get item with id 7
     Response response = itemClient.getItemById(id);
     HttpAssertionAssumption.assertThat(response)
         .statusIsOk();

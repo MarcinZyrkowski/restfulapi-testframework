@@ -23,6 +23,7 @@ public class GetItemsTest extends BaseTest {
   public void getItemsByIds(List<Item> expectedItemList) {
     String[] ids = {"3", "5", "7"};
 
+    // get item with ids 3, 5, 7
     Response response = itemClient.getItemsByIds(ids);
     HttpAssertionAssumption.assertThat(response)
         .statusIsOk();

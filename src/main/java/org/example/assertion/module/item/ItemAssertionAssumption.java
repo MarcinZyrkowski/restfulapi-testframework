@@ -27,7 +27,7 @@ public class ItemAssertionAssumption {
   }
 
   public void isEqualTo(Item expectedItem) {
-    Allure.step("is equal to", () -> {
+    Allure.step("Item is equal to", () -> {
       itemObjectAssert
           .isEqualTo(expectedItem);
 

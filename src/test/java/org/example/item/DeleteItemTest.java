@@ -24,13 +24,13 @@ public class DeleteItemTest extends BaseTest {
   @ParameterizedTest(name = "- created with random values")
   @MethodSource("org.example.factory.ItemFactory#provideRandomItem")
   public void deleteItem(Item requestBody) {
-    // creating item
+    // create item
     Response postResponse = itemClient.createItem(requestBody);
     HttpAssertionAssumption.assumeThat(postResponse)
         .statusIsOk();
     Item postResponseBody = ResponseMapper.mapToItem(postResponse);
 
-    // deleting item
+    // delete item
     DeleteResponse expectedDeleteResponse = new DeleteResponse(
         String.format("Object with id = %s has been deleted.", postResponseBody.id()));
     Response deleteResponse = itemClient.deleteItem(postResponseBody.id());
@@ -39,7 +39,7 @@ public class DeleteItemTest extends BaseTest {
     DeleteMessageAssertionAssumption.assertThat(deleteResponse)
         .isEqualsTo(expectedDeleteResponse);
 
-    // verifying item is deleted
+    // verify item is deleted
     ErrorResponse expectedErrorResponse = new ErrorResponse(String.format("Oject with id=%s was not found.",
         postResponseBody.id()));
     Response getResponse = itemClient.getItemById(postResponseBody.id());

@@ -21,7 +21,7 @@ public class DeleteMessageAssertionAssumption {
   }
 
   public void isEqualsTo(DeleteResponse deleteResponse) {
-    Allure.step("is equal to", () -> {
+    Allure.step("Delete Response is equal to", () -> {
           deleteResponseObjectAssertionAssumption
               .isEqualTo(deleteResponse);
 

@@ -22,19 +22,26 @@ public class CreateItemTest extends BaseTest {
   @MethodSource("org.example.factory.ItemFactory#provideRandomItem")
   public void createItem(Item requestBody) {
 
+    // create item
     Response postResponse = itemClient.createItem(requestBody);
     HttpAssertionAssumption.assertThat(postResponse)
         .statusIsOk();
     ItemAssertionAssumption.assertThat(postResponse)
         .comesFromRequestBody(requestBody);
 
+    // verify item is created
     Item postResponseBody = ResponseMapper.mapToItem(postResponse);
-
     Response getResponse = itemClient.getItemById(postResponseBody.id());
     HttpAssertionAssumption.assumeThat(getResponse)
         .statusIsOk();
     ItemAssertionAssumption.assumeThat(getResponse)
         .comesFromRequestBody(requestBody);
+
+    // tear down
+    // delete created item
+    Response deleteResponse = itemClient.deleteItem(postResponseBody.id());
+    HttpAssertionAssumption.assumeThat(deleteResponse)
+        .statusIsOk();
   }
 
 }

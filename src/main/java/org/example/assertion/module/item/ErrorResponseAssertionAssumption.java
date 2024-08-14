@@ -21,7 +21,7 @@ public class ErrorResponseAssertionAssumption {
   }
 
   public void isEqualTo(ErrorResponse errorResponse) {
-    Allure.step("is equal to", () -> {
+    Allure.step("Error response is equal to", () -> {
       errorResponseObjectAssertionAssumption
           .isEqualTo(errorResponse);
 

@@ -12,7 +12,7 @@ import org.example.utils.JsonConverter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ItemAssertion {
 
-    private Item item;
+    private Item itemResponse;
 
     public static ItemAssertion assertThat(Response response) {
         Item item = ResponseMapper.mapToItem(response);
@@ -21,7 +21,7 @@ public class ItemAssertion {
 
     public void isEqualTo(Item expectedItem) {
         Allure.step("is equal to", () -> {
-            Assertions.assertThat(item)
+            Assertions.assertThat(itemResponse)
                     .isEqualTo(expectedItem);
 
             Allure.addAttachment("expected item", JsonConverter.serializePojo(expectedItem));
@@ -29,8 +29,8 @@ public class ItemAssertion {
     }
 
     public void comesFromRequestBody(Item requestBody) {
-        Allure.step("comes from request body", () -> {
-            Assertions.assertThat(item)
+        Allure.step("Assert that item response comes from request body", () -> {
+            Assertions.assertThat(itemResponse)
                     .usingRecursiveComparison()
                     .ignoringFields("id", "createdAt")
                     .isEqualTo(requestBody);

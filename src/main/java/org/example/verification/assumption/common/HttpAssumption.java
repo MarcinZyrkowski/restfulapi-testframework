@@ -22,7 +22,7 @@ public class HttpAssumption {
                 .isEqualTo(httpStatusCode);
     }
 
-    @Step("Status code was: 200")
+    @Step("Assume status code was: 200")
     public void statusIsOk() {
         validateResponseStatusCode(HttpStatus.SC_OK);
     }

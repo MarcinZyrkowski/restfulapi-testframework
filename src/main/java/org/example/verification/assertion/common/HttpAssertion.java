@@ -18,11 +18,12 @@ public class HttpAssertion {
 
     public void validateResponseStatusCode(int httpStatusCode) {
         Assertions.assertThat(response.getStatusCode())
-                .withFailMessage("Status code should be " + httpStatusCode + " but was: " + response.getStatusCode())
+                .withFailMessage("Status code should be " + httpStatusCode + " but was: "
+                        + response.getStatusCode())
                 .isEqualTo(httpStatusCode);
     }
 
-    @Step("Status code was: 200")
+    @Step("Assert status code was: 200")
     public void statusIsOk() {
         validateResponseStatusCode(HttpStatus.SC_OK);
     }

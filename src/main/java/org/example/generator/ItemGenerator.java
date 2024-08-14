@@ -15,6 +15,7 @@ public class ItemGenerator {
     public static Item generateRandomItem() {
         int minPrice = 1;
         int maxPrice = 10_000;
+        int minYear = 2010;
 
         Device device = RANDOM.nextBoolean() ? Device.PHONE : Device.LAPTOP;
 
@@ -23,7 +24,7 @@ public class ItemGenerator {
                         ? EnumUtils.getRandom(Phone.class).getName()
                         : EnumUtils.getRandom(Laptop.class).getName())
                 .data(Item.Data.builder()
-                        .year(RANDOM.nextInt(LocalDate.now().getYear()))
+                        .year(RANDOM.nextInt(minYear, LocalDate.now().getYear()))
                         .color(EnumUtils.getRandom(Colors.class).getName())
                         .price((double) FakerUtils.getFaker().number().numberBetween(minPrice, maxPrice))
                         .cpuModel(EnumUtils.getRandom(CpuModel.class).getModelName())

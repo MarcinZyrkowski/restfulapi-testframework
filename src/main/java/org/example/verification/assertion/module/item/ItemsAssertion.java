@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ItemsAssertion {
 
-    private List<Item> items;
+    private List<Item> itemsResponse;
 
     public static ItemsAssertion assertThat(Response response) {
         Item[] itemArray = response.as(Item[].class);
@@ -22,8 +22,8 @@ public class ItemsAssertion {
     }
 
     public void isEqualTo(List<Item> expectedList) {
-        Allure.step("is equal to", () -> {
-            Assertions.assertThat(items)
+        Allure.step("Assert items response is equal to", () -> {
+            Assertions.assertThat(itemsResponse)
                     .isEqualTo(expectedList);
 
             Allure.addAttachment("expected list", JsonConverter.serializePojo(expectedList));

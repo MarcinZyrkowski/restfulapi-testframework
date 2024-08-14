@@ -12,7 +12,7 @@ import org.example.utils.JsonConverter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ItemAssumption {
 
-    private Item item;
+    private Item itemResponse;
 
     public static ItemAssumption assumeThat(Response response) {
         Item item = ResponseMapper.mapToItem(response);
@@ -20,8 +20,8 @@ public class ItemAssumption {
     }
 
     public void comesFromRequestBody(Item requestBody) {
-        Allure.step("comes from request body", () -> {
-            Assumptions.assumeThat(item)
+        Allure.step("Assume that item response comes from request body", () -> {
+            Assumptions.assumeThat(itemResponse)
                     .usingRecursiveComparison()
                     .ignoringFields("id", "createdAt")
                     .isEqualTo(requestBody);

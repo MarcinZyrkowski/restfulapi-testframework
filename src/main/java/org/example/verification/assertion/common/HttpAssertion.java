@@ -10,22 +10,22 @@ import org.assertj.core.api.Assertions;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class HttpAssertion {
 
-    private Response response;
+  private Response response;
 
-    public static HttpAssertion assertThat(Response response) {
-        return new HttpAssertion(response);
-    }
+  public static HttpAssertion assertThat(Response response) {
+    return new HttpAssertion(response);
+  }
 
-    public void validateResponseStatusCode(int httpStatusCode) {
-        Assertions.assertThat(response.getStatusCode())
-                .withFailMessage("Status code should be " + httpStatusCode + " but was: "
-                        + response.getStatusCode())
-                .isEqualTo(httpStatusCode);
-    }
+  public void validateResponseStatusCode(int httpStatusCode) {
+    Assertions.assertThat(response.getStatusCode())
+        .withFailMessage("Status code should be " + httpStatusCode + " but was: "
+            + response.getStatusCode())
+        .isEqualTo(httpStatusCode);
+  }
 
-    @Step("Assert status code was: 200")
-    public void statusIsOk() {
-        validateResponseStatusCode(HttpStatus.SC_OK);
-    }
+  @Step("Assert status code was: 200")
+  public void statusIsOk() {
+    validateResponseStatusCode(HttpStatus.SC_OK);
+  }
 
 }

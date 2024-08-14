@@ -13,15 +13,16 @@ public record Item(String id,
                    Data data,
                    String createdAt) {
 
-    @With
-    @Builder(toBuilder = true)
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    public record Data(Integer year,
-                       Double price,
-                       String color,
-                       @JsonProperty("capacity GB") Integer capacity,
-                       @JsonProperty("CPU model") String cpuModel,
-                       @JsonProperty("Hard disk size") String hardDiskSize) {
-    }
+  @With
+  @Builder(toBuilder = true)
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  public record Data(Integer year,
+                     Double price,
+                     String color,
+                     @JsonProperty("capacity GB") Integer capacity,
+                     @JsonProperty("CPU model") String cpuModel,
+                     @JsonProperty("Hard disk size") String hardDiskSize) {
+
+  }
 
 }

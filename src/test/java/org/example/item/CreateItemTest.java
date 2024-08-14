@@ -19,24 +19,24 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayName("Create Item Test")
 public class CreateItemTest extends BaseTest {
 
-    @DisplayName("Create item")
-    @ParameterizedTest(name = "with random values")
-    @MethodSource("org.example.factory.ItemFactory#provideRandomItem")
-    public void createItem(Item requestBody) {
+  @DisplayName("Create item")
+  @ParameterizedTest(name = "with random values")
+  @MethodSource("org.example.factory.ItemFactory#provideRandomItem")
+  public void createItem(Item requestBody) {
 
-        Response postResponse = itemClient.createItem(requestBody);
-        HttpAssertion.assertThat(postResponse)
-                .statusIsOk();
-        ItemAssertion.assertThat(postResponse)
-                .comesFromRequestBody(requestBody);
+    Response postResponse = itemClient.createItem(requestBody);
+    HttpAssertion.assertThat(postResponse)
+        .statusIsOk();
+    ItemAssertion.assertThat(postResponse)
+        .comesFromRequestBody(requestBody);
 
-        Item postResponseBody = ResponseMapper.mapToItem(postResponse);
+    Item postResponseBody = ResponseMapper.mapToItem(postResponse);
 
-        Response getResponse = itemClient.getItemById(postResponseBody.id());
-        HttpAssumption.assumeThat(getResponse)
-                .statusIsOk();
-        ItemAssumption.assumeThat(getResponse)
-                .comesFromRequestBody(requestBody);
-    }
+    Response getResponse = itemClient.getItemById(postResponseBody.id());
+    HttpAssumption.assumeThat(getResponse)
+        .statusIsOk();
+    ItemAssumption.assumeThat(getResponse)
+        .comesFromRequestBody(requestBody);
+  }
 
 }

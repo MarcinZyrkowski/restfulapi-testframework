@@ -7,16 +7,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum Colors {
 
-    RED("RED"),
-    GREEN("GREEN"),
-    BLUE("BLUE"),
-    YELLOW("YELLOW"),
-    CYAN("CYAN"),
-    MAGENTA("MAGENTA"),
-    ORANGE("ORANGE"),
-    PURPLE("PURPLE"),
-    BLACK("BLACK"),
-    WHITE("WHITE");
+  RED("RED"),
+  GREEN("GREEN"),
+  BLUE("BLUE"),
+  YELLOW("YELLOW"),
+  CYAN("CYAN"),
+  MAGENTA("MAGENTA"),
+  ORANGE("ORANGE"),
+  PURPLE("PURPLE"),
+  BLACK("BLACK"),
+  WHITE("WHITE");
 
-    private final String name;
+  private final String name;
 }

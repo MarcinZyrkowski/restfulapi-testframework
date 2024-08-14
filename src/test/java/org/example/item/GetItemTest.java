@@ -16,17 +16,17 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayName("Get Item Test")
 public class GetItemTest extends BaseTest {
 
-    @DisplayName("Get Item: ")
-    @ParameterizedTest(name = "for item with id = 7")
-    @MethodSource("org.example.factory.ItemFactory#provideItemWithId7")
-    public void getItem(Item expectedItem) {
-        String id = "7";
+  @DisplayName("Get Item: ")
+  @ParameterizedTest(name = "for item with id = 7")
+  @MethodSource("org.example.factory.ItemFactory#provideItemWithId7")
+  public void getItem(Item expectedItem) {
+    String id = "7";
 
-        Response response = itemClient.getItemById(id);
-        HttpAssertion.assertThat(response)
-                .statusIsOk();
-        ItemAssertion.assertThat(response)
-                .isEqualTo(expectedItem);
-    }
+    Response response = itemClient.getItemById(id);
+    HttpAssertion.assertThat(response)
+        .statusIsOk();
+    ItemAssertion.assertThat(response)
+        .isEqualTo(expectedItem);
+  }
 
 }

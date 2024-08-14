@@ -10,12 +10,12 @@ import org.example.config.Configuration;
 
 public class RestClient {
 
-    public RequestSpecification basicRequestSpecification() {
-        return RestAssured.given()
-                .contentType(ContentType.JSON)
-                .baseUri(Configuration.CONFIG.baseUrl())
-                .filter(new AllureRestAssured())
-                .filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
-    }
+  public RequestSpecification basicRequestSpecification() {
+    return RestAssured.given()
+        .contentType(ContentType.JSON)
+        .baseUri(Configuration.CONFIG.baseUrl())
+        .filter(new AllureRestAssured())
+        .filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+  }
 
 }

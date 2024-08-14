@@ -12,22 +12,22 @@ import org.example.utils.JsonConverter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ItemAssumption {
 
-    private Item itemResponse;
+  private Item itemResponse;
 
-    public static ItemAssumption assumeThat(Response response) {
-        Item item = ResponseMapper.mapToItem(response);
-        return new ItemAssumption(item);
-    }
+  public static ItemAssumption assumeThat(Response response) {
+    Item item = ResponseMapper.mapToItem(response);
+    return new ItemAssumption(item);
+  }
 
-    public void comesFromRequestBody(Item requestBody) {
-        Allure.step("Assume that item response comes from request body", () -> {
-            Assumptions.assumeThat(itemResponse)
-                    .usingRecursiveComparison()
-                    .ignoringFields("id", "createdAt")
-                    .isEqualTo(requestBody);
+  public void comesFromRequestBody(Item requestBody) {
+    Allure.step("Assume that item response comes from request body", () -> {
+      Assumptions.assumeThat(itemResponse)
+          .usingRecursiveComparison()
+          .ignoringFields("id", "createdAt")
+          .isEqualTo(requestBody);
 
-            Allure.addAttachment("request body", JsonConverter.serializePojo(requestBody));
-        });
-    }
+      Allure.addAttachment("request body", JsonConverter.serializePojo(requestBody));
+    });
+  }
 
 }

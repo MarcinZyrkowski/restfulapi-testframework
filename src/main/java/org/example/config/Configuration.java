@@ -7,6 +7,6 @@ import org.aeonbits.owner.ConfigFactory;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Configuration {
 
-    public static final ServerConfig CONFIG = ConfigFactory.create(ServerConfig.class);
+  public static final ServerConfig CONFIG = ConfigFactory.create(ServerConfig.class);
 
 }

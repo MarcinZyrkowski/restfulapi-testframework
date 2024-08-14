@@ -7,12 +7,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum HardDiskSize {
 
-    HD128GB("128 GB"),
-    HD256GB("256 GB"),
-    HD512GB("512 GB"),
-    HD1TB("1 TB"),
-    HD2TB("2 TB"),
-    HD5TB("5 TB");
+  HD128GB("128 GB"),
+  HD256GB("256 GB"),
+  HD512GB("512 GB"),
+  HD1TB("1 TB"),
+  HD2TB("2 TB"),
+  HD5TB("5 TB");
 
-    private final String size;
+  private final String size;
 }

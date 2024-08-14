@@ -6,8 +6,8 @@ import io.restassured.response.Response;
 import java.util.List;
 import org.example.BaseTest;
 import org.example.model.service.Item;
-import org.example.verification.assertion.common.HttpAssertion;
-import org.example.verification.assertion.module.item.ItemsAssertion;
+import org.example.assertion.common.HttpAssertionAssumption;
+import org.example.assertion.module.item.ItemsAssertionAssumption;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -24,9 +24,9 @@ public class GetItemsTest extends BaseTest {
     String[] ids = {"3", "5", "7"};
 
     Response response = itemClient.getItemsByIds(ids);
-    HttpAssertion.assertThat(response)
+    HttpAssertionAssumption.assertThat(response)
         .statusIsOk();
-    ItemsAssertion.assertThat(response)
+    ItemsAssertionAssumption.assertThat(response)
         .isEqualTo(expectedItemList);
   }
 

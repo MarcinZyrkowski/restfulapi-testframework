@@ -1,27 +1,34 @@
-package org.example.verification.assertion.module.item;
+package org.example.assertion.module.item;
 
 import io.qameta.allure.Allure;
 import io.restassured.response.Response;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.Assumptions;
+import org.assertj.core.api.ObjectAssert;
 import org.example.mapper.ResponseMapper;
 import org.example.model.service.Item;
 import org.example.utils.JsonConverter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class ItemAssertion {
+public class ItemAssertionAssumption {
 
-  private Item itemResponse;
+  private ObjectAssert<Item> itemObjectAssert;
 
-  public static ItemAssertion assertThat(Response response) {
+  public static ItemAssertionAssumption assertThat(Response response) {
     Item item = ResponseMapper.mapToItem(response);
-    return new ItemAssertion(item);
+    return new ItemAssertionAssumption(Assertions.assertThat(item));
+  }
+
+  public static ItemAssertionAssumption assumeThat(Response response) {
+    Item item = ResponseMapper.mapToItem(response);
+    return new ItemAssertionAssumption(Assumptions.assumeThat(item));
   }
 
   public void isEqualTo(Item expectedItem) {
     Allure.step("is equal to", () -> {
-      Assertions.assertThat(itemResponse)
+      itemObjectAssert
           .isEqualTo(expectedItem);
 
       Allure.addAttachment("expected item", JsonConverter.serializePojo(expectedItem));
@@ -30,7 +37,7 @@ public class ItemAssertion {
 
   public void comesFromRequestBody(Item requestBody) {
     Allure.step("Assert that item response comes from request body", () -> {
-      Assertions.assertThat(itemResponse)
+      itemObjectAssert
           .usingRecursiveComparison()
           .ignoringFields("id", "createdAt")
           .isEqualTo(requestBody);

@@ -5,8 +5,8 @@ import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.example.BaseTest;
 import org.example.model.service.Item;
-import org.example.verification.assertion.common.HttpAssertion;
-import org.example.verification.assertion.module.item.ItemAssertion;
+import org.example.assertion.common.HttpAssertionAssumption;
+import org.example.assertion.module.item.ItemAssertionAssumption;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -23,9 +23,9 @@ public class GetItemTest extends BaseTest {
     String id = "7";
 
     Response response = itemClient.getItemById(id);
-    HttpAssertion.assertThat(response)
+    HttpAssertionAssumption.assertThat(response)
         .statusIsOk();
-    ItemAssertion.assertThat(response)
+    ItemAssertionAssumption.assertThat(response)
         .isEqualTo(expectedItem);
   }
 

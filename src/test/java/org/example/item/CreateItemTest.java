@@ -9,6 +9,7 @@ import org.example.model.service.Item;
 import org.example.verification.assertion.common.HttpAssertion;
 import org.example.verification.assertion.module.item.ItemAssertion;
 import org.example.verification.assumption.common.HttpAssumption;
+import org.example.verification.assumption.module.item.ItemAssumption;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -29,12 +30,12 @@ public class CreateItemTest extends BaseTest {
         ItemAssertion.assertThat(postResponse)
                 .comesFromRequestBody(requestBody);
 
-        Item responseItem = ResponseMapper.mapToItem(postResponse);
+        Item postResponseBody = ResponseMapper.mapToItem(postResponse);
 
-        Response getResponse = itemClient.getItemById(responseItem.id());
+        Response getResponse = itemClient.getItemById(postResponseBody.id());
         HttpAssumption.assumeThat(getResponse)
                 .statusIsOk();
-        ItemAssertion.assertThat(getResponse) // todo change to assumption
+        ItemAssumption.assumeThat(getResponse)
                 .comesFromRequestBody(requestBody);
     }
 

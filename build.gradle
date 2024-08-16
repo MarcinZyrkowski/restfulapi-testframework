@@ -10,6 +10,12 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
 ext {
     lombokVersion = '1.18.30'
     junitSuiteVersion = '1.10.2'
@@ -56,5 +62,5 @@ dependencies {
 test {
     useJUnitPlatform()
     // Configure javaagent for test execution
-    jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
+    jvmArgs = ["-javaagent:${configurations.agent.singleFile}"]
 }

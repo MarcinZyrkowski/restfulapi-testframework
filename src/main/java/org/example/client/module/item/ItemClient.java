@@ -29,6 +29,12 @@ public class ItemClient extends RestClient {
         .get(ITEMS);
   }
 
+  @Step("Get all items")
+  public Response getItems() {
+    return basicRequestSpecification()
+        .get(ITEMS);
+  }
+
   @Step("Create Item")
   public Response createItem(Item item) {
     return basicRequestSpecification()

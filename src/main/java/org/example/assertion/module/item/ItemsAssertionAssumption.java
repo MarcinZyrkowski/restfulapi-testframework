@@ -7,7 +7,6 @@ import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.assertj.core.api.Assertions;
-import org.assertj.core.api.Assumptions;
 import org.assertj.core.api.ObjectAssert;
 import org.example.mapper.ResponseMapper;
 import org.example.model.service.restfulapi.item.Item;
@@ -24,14 +23,11 @@ public class ItemsAssertionAssumption {
     return new ItemsAssertionAssumption(Assertions.assertThat(itemListWrapper));
   }
 
-  public static ItemsAssertionAssumption assumeThat(Response response) {
-    ItemListWrapper itemListWrapper = ResponseMapper.mapToItemListWrapper(response);
-    return new ItemsAssertionAssumption(Assumptions.assumeThat(itemListWrapper));
-  }
-
   public void isEqualTo(List<Item> expectedList) {
     Allure.step("Assert/Assume items response is equal to", () -> {
       itemListWrapperObjectAssertionAssumption
+          .usingRecursiveComparison()
+          .ignoringCollectionOrder()
           .isEqualTo(new ItemListWrapper(expectedList));
 
       Allure.addAttachment("expected list", JsonConverter.serializePojo(expectedList));

@@ -30,7 +30,7 @@ public class ItemGenerator {
             .year(RANDOM.nextInt(MIN_YEAR, LocalDate.now().getYear()))
             .color(EnumUtils.getRandom(Colors.class).getName())
             .price((double) FakerUtils.getFaker().number().numberBetween(MIN_PRICE, MAX_PRICE))
-            .capacity(EnumUtils.getRandom(Capacity.class).getSize())
+            .capacityGB(EnumUtils.getRandom(Capacity.class).getSize())
             .cpuModel(EnumUtils.getRandom(CpuModel.class).getModelName())
             .build())
         .build();

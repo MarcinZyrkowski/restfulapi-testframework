@@ -51,4 +51,12 @@ public class ItemClient extends RestClient {
         .put(ITEM_BY_ID);
   }
 
+  @Step("Partially update item with id: {itemId}")
+  public Response partiallyUpdate(String itemId, Item item) {
+    return basicRequestSpecification()
+        .body(item)
+        .pathParam("itemId", itemId)
+        .patch(ITEM_BY_ID);
+  }
+
 }

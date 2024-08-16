@@ -15,9 +15,4 @@ To run test which include specific task e.g. `"debug"`,
 annotate test/s by `@Tag("debug")`, then run the following command:
 `gradle junit5 -Ptag=debug`
 <br/>
-> Note: If `-Ptags=` option not provided, full regression will run
-
-## TO DO:
-- update readme
-- finish tests for all endpoints
-- add github actions
+> Note: If `-Ptags=` option not provided, full regression will be run

@@ -17,6 +17,9 @@ annotate test/s by `@Tag("debug")`, then run the following command:
 <br/>
 > Note: If `-Ptag=` option not provided, full regression will be run
 
+## Environment
+To choose environment put `env={env_name}` as environment variable , where `env_name=DEV,QA`
+
 ## GitHub Actions Integration
 The test framework is integrated with GitHub Actions. You can run tests via GitHub Action.
 Go to `GitHub Action Manual Test Run`, select environment and run regression.

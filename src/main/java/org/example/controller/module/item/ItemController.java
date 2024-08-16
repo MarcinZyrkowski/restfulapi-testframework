@@ -25,7 +25,7 @@ public class ItemController {
 
   @Step("Verify Item doesn't exist - using get method")
   public void verifyItemDoesntExist(String itemId) {
-    ErrorResponse expectedErrorResponse = ErrorResponseGenerator.generateWithId(itemId);
+    ErrorResponse expectedErrorResponse = ErrorResponseGenerator.generateObjectWithIdNotFound(itemId);
 
     Response getResponse = itemClient.getItemById(itemId);
     HttpAssertionAssumption.assumeThat(getResponse)

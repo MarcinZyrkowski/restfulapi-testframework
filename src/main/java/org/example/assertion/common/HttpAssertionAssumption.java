@@ -42,4 +42,9 @@ public class HttpAssertionAssumption {
     validateResponseStatusCode(HttpStatus.SC_NOT_FOUND);
   }
 
+  @Step("Status code was: 504")
+  public void statusIsMethodNotAllowed() {
+    validateResponseStatusCode(HttpStatus.SC_METHOD_NOT_ALLOWED);
+  }
+
 }

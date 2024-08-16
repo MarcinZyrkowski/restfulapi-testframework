@@ -4,6 +4,7 @@ import io.qameta.allure.Allure;
 import io.restassured.response.Response;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import org.assertj.core.api.Assertions;
 import org.assertj.core.api.Assumptions;
 import org.assertj.core.api.ObjectAssert;
 import org.example.mapper.ResponseMapper;
@@ -20,12 +21,17 @@ public class ErrorResponseAssertionAssumption {
     return new ErrorResponseAssertionAssumption(Assumptions.assumeThat(errorResponse));
   }
 
+  public static ErrorResponseAssertionAssumption assertThat(Response response) {
+    ErrorResponse errorResponse = ResponseMapper.mapToErrorResponse(response);
+    return new ErrorResponseAssertionAssumption(Assertions.assertThat(errorResponse));
+  }
+
   public void isEqualTo(ErrorResponse errorResponse) {
     Allure.step("Error response is equal to", () -> {
-      errorResponseObjectAssertionAssumption
-          .isEqualTo(errorResponse);
+          errorResponseObjectAssertionAssumption
+              .isEqualTo(errorResponse);
 
-      Allure.addAttachment("error response", JsonConverter.serializePojo(errorResponse));
+          Allure.addAttachment("error response", JsonConverter.serializePojo(errorResponse));
         }
     );
   }

@@ -16,3 +16,12 @@ annotate test/s by `@Tag("debug")`, then run the following command:
 `gradle junit5 -Ptag=debug`
 <br/>
 > Note: If `-Ptags=` option not provided, full regression will be run
+
+## GitHub Actions Integration
+The test framework is integrated with GitHub Actions. You can run tests via GitHub Action.
+Go to `GitHub Action Manual Test Run`, select environment and run regression.
+To open reports do the following steps:
+1. Download `reports` archive
+2. Extract archive
+3. Open terminal at `reports` folder
+4. Execute `allure open` command

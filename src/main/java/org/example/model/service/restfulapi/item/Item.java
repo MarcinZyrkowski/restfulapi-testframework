@@ -33,6 +33,7 @@ public record Item(String id,
                      @JsonProperty("Screen size") Double screenSize,
                      @JsonProperty("CPU model") String cpuModel,
                      @JsonProperty("Hard disk size") String hardDiskSize) {
+
   }
 
 }

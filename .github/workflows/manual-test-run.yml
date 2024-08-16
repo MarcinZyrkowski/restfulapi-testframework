@@ -1,4 +1,4 @@
-name: GitHub Action Test Run
+name: GitHub Action Manual Test Run
 
 on:
   workflow_dispatch:
@@ -49,4 +49,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Reports
-          path: build/reports
+          path: build/allure-results

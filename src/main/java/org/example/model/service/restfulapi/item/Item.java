@@ -11,7 +11,8 @@ import lombok.With;
 public record Item(String id,
                    String name,
                    Data data,
-                   String createdAt) {
+                   String createdAt,
+                   String updatedAt) {
 
   @With
   @Builder(toBuilder = true)

@@ -39,7 +39,7 @@ public class ItemAssertionAssumption {
     Allure.step("Assert/Assume item response comes from request body", () -> {
       itemObjectAssert
           .usingRecursiveComparison()
-          .ignoringFields("id", "createdAt")
+          .ignoringFields("id", "createdAt", "updatedAt")
           .isEqualTo(requestBody);
 
       Allure.addAttachment("request body", JsonConverter.serializePojo(requestBody));

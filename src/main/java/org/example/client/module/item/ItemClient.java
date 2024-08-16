@@ -43,4 +43,12 @@ public class ItemClient extends RestClient {
         .delete(ITEM_BY_ID);
   }
 
+  @Step("Update item with id: {itemId}")
+  public Response updateItem(String itemId, Item item) {
+    return basicRequestSpecification()
+        .body(item)
+        .pathParam("itemId", itemId)
+        .put(ITEM_BY_ID);
+  }
+
 }

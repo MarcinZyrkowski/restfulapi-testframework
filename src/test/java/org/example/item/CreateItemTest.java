@@ -21,7 +21,6 @@ public class CreateItemTest extends BaseTest {
   @ParameterizedTest(name = "with random values")
   @MethodSource("org.example.factory.ItemFactory#provideRandomItem")
   public void createItem(Item requestBody) {
-
     // create item
     Response postResponse = itemClient.createItem(requestBody);
     HttpAssertionAssumption.assertThat(postResponse)

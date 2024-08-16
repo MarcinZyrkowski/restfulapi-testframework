@@ -59,6 +59,17 @@ dependencies {
     implementation 'org.aeonbits.owner:owner-java8:1.0.12'
 }
 
+tasks.register('junit5', Test) {
+    group = 'JUnit5'
+    description = 'allows running junit tests by tag'
+
+    useJUnitPlatform {
+        def tag = project.findProperty('tag') ?: 'debug' // Default to 'debug' if no tag is provided
+        includeTags tag // Include tests with the specified tag
+    }
+    jvmArgs = ["-javaagent:${configurations.agent.singleFile}"]
+}
+
 test {
     useJUnitPlatform()
     // Configure javaagent for test execution

@@ -15,7 +15,7 @@ To run test which include specific task e.g. `"debug"`,
 annotate test/s by `@Tag("debug")`, then run the following command:
 `gradle junit5 -Ptag=debug`
 <br/>
-> Note: If `-Ptags=` option not provided, full regression will be run
+> Note: If `-Ptag=` option not provided, full regression will be run
 
 ## GitHub Actions Integration
 The test framework is integrated with GitHub Actions. You can run tests via GitHub Action.
@@ -25,3 +25,6 @@ To open reports do the following steps:
 2. Extract archive
 3. Open terminal at `reports` folder
 4. Execute `allure open` command
+
+## Note
+QA env is set to wrong url, tests run against QA will fail. This is only mock to emulate running tests on 2 envs.

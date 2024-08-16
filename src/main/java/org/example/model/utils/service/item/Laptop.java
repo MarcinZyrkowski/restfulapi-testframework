@@ -1,4 +1,4 @@
-package org.example.model.utils;
+package org.example.model.utils.service.item;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

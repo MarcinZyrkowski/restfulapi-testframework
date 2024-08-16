@@ -1,6 +1,6 @@
 package org.example.generator;
 
-import org.example.model.service.ErrorResponse;
+import org.example.model.service.restfulapi.ErrorResponse;
 
 public class ErrorResponseGenerator {
 

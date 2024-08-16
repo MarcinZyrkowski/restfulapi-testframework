@@ -2,7 +2,7 @@ package org.example.factory;
 
 import java.util.stream.Stream;
 import org.example.generator.ItemGenerator;
-import org.example.model.service.Item;
+import org.example.model.service.restfulapi.item.Item;
 import org.junit.jupiter.params.provider.Arguments;
 
 public class ItemFactory {

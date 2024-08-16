@@ -64,8 +64,8 @@ tasks.register('junit5', Test) {
     description = 'allows running junit tests by tag'
 
     useJUnitPlatform {
-        def tag = project.findProperty('tag') ?: 'debug' // Default to 'debug' if no tag is provided
-        includeTags tag // Include tests with the specified tag
+        def tag = project.findProperty('tag') ?: 'full'
+        includeTags tag
     }
     jvmArgs = ["-javaagent:${configurations.agent.singleFile}"]
 }

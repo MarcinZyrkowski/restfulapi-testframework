@@ -1,4 +1,4 @@
-package org.example.model.service;
+package org.example.model.service.restfulapi.item;
 
 import lombok.Builder;
 

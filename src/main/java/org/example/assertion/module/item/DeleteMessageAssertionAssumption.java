@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.ObjectAssert;
 import org.example.mapper.ResponseMapper;
-import org.example.model.service.DeleteResponse;
+import org.example.model.service.restfulapi.item.DeleteResponse;
 import org.example.utils.JsonConverter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)

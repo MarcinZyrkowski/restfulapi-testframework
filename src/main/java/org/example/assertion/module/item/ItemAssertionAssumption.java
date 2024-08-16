@@ -8,7 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.assertj.core.api.Assumptions;
 import org.assertj.core.api.ObjectAssert;
 import org.example.mapper.ResponseMapper;
-import org.example.model.service.Item;
+import org.example.model.service.restfulapi.item.Item;
 import org.example.utils.JsonConverter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)

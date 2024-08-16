@@ -2,10 +2,10 @@ package org.example.mapper;
 
 import io.restassured.response.Response;
 import java.util.List;
-import org.example.model.service.DeleteResponse;
-import org.example.model.service.ErrorResponse;
-import org.example.model.service.Item;
-import org.example.model.service.ItemListWrapper;
+import org.example.model.service.restfulapi.item.DeleteResponse;
+import org.example.model.service.restfulapi.ErrorResponse;
+import org.example.model.service.restfulapi.item.Item;
+import org.example.model.service.restfulapi.item.ItemListWrapper;
 
 public class ResponseMapper {
 

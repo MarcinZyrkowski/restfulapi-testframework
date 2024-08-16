@@ -8,8 +8,8 @@ import org.example.assertion.module.item.ItemAssertionAssumption;
 import org.example.client.module.item.ItemClient;
 import org.example.generator.ErrorResponseGenerator;
 import org.example.mapper.ResponseMapper;
-import org.example.model.service.ErrorResponse;
-import org.example.model.service.Item;
+import org.example.model.service.restfulapi.ErrorResponse;
+import org.example.model.service.restfulapi.item.Item;
 
 public class ItemController {
 

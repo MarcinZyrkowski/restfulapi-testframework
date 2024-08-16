@@ -2,13 +2,13 @@ package org.example.generator;
 
 import java.time.LocalDate;
 import java.util.Random;
-import org.example.model.service.Item;
-import org.example.model.utils.Capacity;
-import org.example.model.utils.Colors;
-import org.example.model.utils.CpuModel;
-import org.example.model.utils.HardDiskSize;
-import org.example.model.utils.Laptop;
-import org.example.model.utils.Phone;
+import org.example.model.service.restfulapi.item.Item;
+import org.example.model.utils.service.item.Capacity;
+import org.example.model.utils.service.item.Colors;
+import org.example.model.utils.service.item.CpuModel;
+import org.example.model.utils.service.item.HardDiskSize;
+import org.example.model.utils.service.item.Laptop;
+import org.example.model.utils.service.item.Phone;
 import org.example.utils.EnumUtils;
 import org.example.utils.FakerUtils;
 

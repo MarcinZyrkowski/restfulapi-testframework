@@ -5,7 +5,7 @@ import io.restassured.response.Response;
 import java.util.Arrays;
 import java.util.List;
 import org.example.client.RestClient;
-import org.example.model.service.Item;
+import org.example.model.service.restfulapi.item.Item;
 
 public class ItemClient extends RestClient {
 

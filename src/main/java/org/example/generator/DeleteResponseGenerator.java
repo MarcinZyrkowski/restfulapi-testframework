@@ -1,6 +1,6 @@
 package org.example.generator;
 
-import org.example.model.service.DeleteResponse;
+import org.example.model.service.restfulapi.item.DeleteResponse;
 
 public class DeleteResponseGenerator {
 

@@ -1,4 +1,4 @@
-package org.example.model.service;
+package org.example.model.service.restfulapi.item;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

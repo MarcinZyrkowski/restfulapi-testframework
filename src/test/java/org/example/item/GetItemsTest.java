@@ -7,7 +7,7 @@ import java.util.List;
 import org.example.BaseTest;
 import org.example.assertion.common.HttpAssertionAssumption;
 import org.example.assertion.module.item.ItemsAssertionAssumption;
-import org.example.model.service.Item;
+import org.example.model.service.restfulapi.item.Item;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

@@ -25,7 +25,7 @@ public class HttpAssertionAssumption {
     return new HttpAssertionAssumption(response, abstractIntegerAssert);
   }
 
-  public void validateResponseStatusCode(int httpStatusCode) {
+  private void validateResponseStatusCode(int httpStatusCode) {
     abstractIntegerAssert
         .withFailMessage("Status code should be " + httpStatusCode + " but was: "
             + response.getStatusCode())

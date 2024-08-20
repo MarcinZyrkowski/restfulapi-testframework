@@ -2,8 +2,11 @@ package org.example.db.service.item;
 
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.example.model.service.restfulapi.item.Item;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ItemDataBase {
 
   private static final Map<String, Item> PREDEFINED_ITEMS = fillPredefinedItems();

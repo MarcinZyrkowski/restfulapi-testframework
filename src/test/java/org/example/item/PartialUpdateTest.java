@@ -29,7 +29,7 @@ public class PartialUpdateTest extends BaseTest {
         .build();
 
     // update item
-    Response updatedItemResponse = itemClient.partiallyUpdate(createdItem.id(), updateRequestBody);
+    Response updatedItemResponse = itemClient.partialUpdate(createdItem.id(), updateRequestBody);
     Item expectedUpdatedItem = createdItem.toBuilder()
         .name(updateRequestBody.name())
         .build();

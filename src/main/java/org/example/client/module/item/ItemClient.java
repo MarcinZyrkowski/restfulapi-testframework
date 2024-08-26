@@ -58,7 +58,7 @@ public class ItemClient extends RestClient {
   }
 
   @Step("Partially update item with id: {itemId}")
-  public Response partiallyUpdate(String itemId, Item item) {
+  public Response partialUpdate(String itemId, Item item) {
     return basicRequestSpecification()
         .body(item)
         .pathParam("itemId", itemId)

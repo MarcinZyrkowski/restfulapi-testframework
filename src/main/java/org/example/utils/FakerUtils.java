@@ -15,7 +15,6 @@ public class FakerUtils {
   private static final Faker faker = new Faker();
 
   @Getter
-  private static final FakeValuesService fakeValuesService = new FakeValuesService(Locale.getDefault(),
-      new RandomService());
-
+  private static final FakeValuesService fakeValuesService =
+      new FakeValuesService(Locale.getDefault(), new RandomService());
 }

@@ -52,11 +52,14 @@ dependencies {
     // needed for allure steps
     agent "org.aspectj:aspectjweaver:${aspectJVersion}"
 
-    implementation 'com.github.javafaker:javafaker:1.0.2'
     implementation 'org.apache.commons:commons-lang3:3.14.0'
 
     // aeonbits owner
     implementation 'org.aeonbits.owner:owner-java8:1.0.12'
+
+    // datafaker
+    implementation 'net.datafaker:datafaker:2.4.0'
+
 }
 
 tasks.register('junit5', Test) {
